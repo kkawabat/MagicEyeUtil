@@ -2,7 +2,7 @@ import os
 
 from PIL import Image
 
-from src.magic_eye_decoder import decode_magic_eye
+from src import decode_magic_eye
 
 
 def test_decode():

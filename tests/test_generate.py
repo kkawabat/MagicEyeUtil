@@ -4,7 +4,7 @@ import pstats
 
 from PIL import Image
 
-from src.magic_eye_generator import magic_eye_generate
+from src import magic_eye_generate
 
 
 def test_generate():
