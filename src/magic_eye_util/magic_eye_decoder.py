@@ -40,7 +40,7 @@ def autocorr(x):
 def get_depth_zeros(depth_range, img_arr):
     weights = np.array([[1, 1, 1],
                         [1, 2, 1],
-                        [1, 1, 1]], dtype=np.float)
+                        [1, 1, 1]], dtype=float)
     weights = weights / np.sum(weights[:])
 
     for shift_idx, depth in enumerate(depth_range):
