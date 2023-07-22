@@ -3,7 +3,8 @@ from setuptools import setup
 setup(
     name='magic_eye_util',
     version='1.0.0',
-    packages=[''],
+    packages=['magic-eye-util'],
+    package_dir={'magic-eye-util': 'src'},
     url='',
     license='',
     author='kkawabat',
