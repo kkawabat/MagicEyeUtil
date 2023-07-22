@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def magic_eye_generate(depth_map_image, texture_map_image, depth_factor=.1, num_strips=10, strip_width=100):
+def generate_magic_eye(depth_map_image, texture_map_image, depth_factor=.1, num_strips=10, strip_width=100):
     texture_map_arr = resize_texture_img(texture_map_image, strip_width)
     depth_map_arr = resize_depth_map(depth_map_image, num_strips, strip_width)
     result_map = gen_depth_offset_map(texture_map_arr, depth_map_arr, num_strips, depth_factor)

@@ -4,7 +4,8 @@ import pstats
 
 from PIL import Image
 
-from src import magic_eye_generate
+
+from src.magic_eye_util.magic_eye_generator import generate_magic_eye
 
 
 def test_generate():
@@ -18,7 +19,7 @@ def test_generate():
     depth_factor_ = .05
     num_strips_ = 10
 
-    result_map_ = magic_eye_generate(texture_map_image, depth_map_image, depth_factor_, num_strips_)
+    result_map_ = generate_magic_eye(texture_map_image, depth_map_image, depth_factor_, num_strips_)
     result_map_.show()
 
 

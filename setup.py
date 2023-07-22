@@ -10,5 +10,5 @@ setup(
     author='Kan Kawabata',
     author_email='kkawabat@asu.edu',
     description='Utility functions used to generate magic eye images',
-    install_requires=['numpy', 'pillow']
+    install_requires=['numpy', 'pillow', 'scipy']
 )

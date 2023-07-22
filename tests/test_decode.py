@@ -2,7 +2,7 @@ import os
 
 from PIL import Image
 
-from src import decode_magic_eye
+from src.magic_eye_util.magic_eye_decoder import decode_magic_eye
 
 
 def test_decode():
@@ -14,4 +14,3 @@ def test_decode():
 
 if __name__ == '__main__':
     test_decode()
-
