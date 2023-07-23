@@ -20,7 +20,6 @@ def decode_magic_eye(magic_image, threshold=5, sensitivity=.8):
         activated_depth_pixels = shift_diff_smoothed >= sensitivity
         result_depth_map_arr[activated_depth_pixels] = depth_range[i]
     img = Image.fromarray(result_depth_map_arr)
-    img.show()
     return img
 
 
