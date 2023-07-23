@@ -19,11 +19,10 @@ def decode_magic_eye(magic_image):
     weights = weights / np.sum(weights[:])
 
     for i, (shift_idx, shift_diff) in enumerate(get_shift_diff(candidate_indices, img_arr)):
-        diff_zeros_smoothed = convolve(shift_diff == 0, weights, mode='constant')
+        shift_diff = np.roll(shift_diff, shift_idx, axis=1)
+        diff_zeros_smoothed = convolve(abs(shift_diff) < 5, weights, mode='constant')
         result_depth_map_arr[diff_zeros_smoothed] = depth_range[i]
-        Image.fromarray(shift_diff).show()
-        # Image.fromarray(diff_zeros_smoothed).show()
-    img = Image.fromarray(result_depth_map_arr.astype(np.uint8))
+    img = Image.fromarray(result_depth_map_arr)
     return img
 
 
@@ -46,21 +45,10 @@ def get_high_correlation_indicies(x):
         raise Exception("could not decode magic eye image")
     best_peak = sorted(peaks, key=lambda x: acorr[x], reverse=True)[0]
     return range(max(int(best_peak-(best_peak/2)), 0), int(best_peak+(best_peak/2)))
-    # _, _, l, r = peak_widths(acorr, [best_peak])
-    # return range(max(int(l[0]-(best_peak/2)), 0), int(r[0]+(best_peak/2)))
-    # lag = np.abs(acorr).argmax() + 1
-    # r = acorr[lag-1]
-    # if np.abs(r) > 0.5:
-    #     return range(1, lag)
-    # raise Exception('Could not decode image')
 
 
 def get_shift_diff(shift_range, img_arr):
-
     for shift_idx in shift_range:
         print(shift_idx)
         shift_diff = img_arr - np.roll(img_arr, -shift_idx, axis=1)
         yield shift_idx, shift_diff
-
-
-
